@@ -1,10 +1,12 @@
 import * as OTPAuth from "otpauth";
 import ProviderRepository from "../repository/provider.repository";
+import BaseService from "../common/BaseService";
 
-class OtpService {
+class OtpService extends BaseService {
     private providerRepository: ProviderRepository;
 
     constructor() {
+        super();
         this.providerRepository = new ProviderRepository();
     }
 
@@ -54,15 +56,14 @@ class OtpService {
     }
 
     async parse(otpauth: string) {
-        const parsedTotp = OTPAuth.URI.parse(otpauth);
+        const uriExtracted = this.extractOTPURI(otpauth);
+        const parsedTotp = OTPAuth.URI.parse(uriExtracted);
         const token = parsedTotp.generate();
-
-        const secret = parsedTotp.secret.base32;
 
         const provider = await this.providerRepository.save({
             issuer: parsedTotp.issuer,
             label: parsedTotp.label,
-            secret,
+            uriExtracted,
             algorithm: parsedTotp.algorithm,
             digits: parsedTotp.digits,
         });

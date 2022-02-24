@@ -1,14 +1,16 @@
 import mongoose, {Mongoose} from "mongoose";
+import baseMapper from "../common/BaseMapper";
 
-class MongoConnector {
+class MongoConnector extends baseMapper{
     public mongoose: Mongoose;
 
     constructor() {
+        super();
         this.mongoose = mongoose;
     }
 
     async connect() {
-        await this.mongoose.connect('mongodb+srv://kingaspx:abner6649@cluster0.kseg8.mongodb.net/keychain?retryWrites=true&w=majority');
+        await this.mongoose.connect(this.databaseURL);
     }
 }
 

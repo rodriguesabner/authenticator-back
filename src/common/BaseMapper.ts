@@ -1,4 +1,12 @@
+import {config} from '../config';
+
 class BaseMapper {
+    public databaseURL: string;
+
+    constructor() {
+        this.databaseURL = config.web.database;
+    }
+
     extractLogo(issuer: string) {
         const provider = issuer.toLowerCase();
         const icons = {name: provider};

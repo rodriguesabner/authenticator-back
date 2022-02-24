@@ -20,7 +20,10 @@ describe('Teste OTP', function () {
 
     it('Deve gerar uma senha OTP', async function () {
         const response = await request
-            .get('/otp/parse?otpuri=otpauth://totp/GitHub:rodriguesabner?secret=PHVCHNOLSHYCDGER&issuer=GitHub');
+            .post('/otp/parse')
+            .send({
+                uri: "otpauth://totp/Slack:jhon.doe@gmail.com?secret=FFBIL3AHU2&issuer=Slack"
+            });
 
         expect(response.status).toBe(200);
         expect(response.body.token.length).toBe(6);
@@ -45,7 +48,7 @@ describe('Teste OTP', function () {
             .send({
                 label: "rodriguesabner",
                 token: "974352",
-                secret: "PHVCHNOLSHYCDGER",
+                secret: "ASDQWE",
                 issuer: "GitHub"
             });
 

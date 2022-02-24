@@ -12,7 +12,7 @@ class OtpRoute {
     }
 
     routes(){
-        this.router.get("/parse", this.otpController.parse.bind(this.otpController))
+        this.router.post("/parse", this.otpController.parse.bind(this.otpController))
         this.router.post("/validate", this.otpController.validate.bind(this.otpController));
         this.router.post("/create", this.otpController.createTotp.bind(this.otpController));
         this.router.post("/generate-code", this.otpController.generateTotp.bind(this.otpController));

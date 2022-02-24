@@ -39,9 +39,9 @@ class OtpController {
     }
 
     async parse(req: Request, res: Response) {
-        const {otpuri}: any = req.query;
+        const {uri} = req.body;
 
-        const ret = await this.otpService.parse(otpuri)
+        const ret = await this.otpService.parse(uri)
         return res.status(200).json(ret)
     }
 
