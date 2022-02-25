@@ -1,5 +1,5 @@
 import {Router} from "express";
-import ProviderController from "../controller/provider.controller";
+import ProviderController from "../controllers/provider.controller";
 
 class ProviderRoute {
     public router: Router;

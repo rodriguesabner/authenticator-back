@@ -1,7 +1,7 @@
 import {config} from './config';
 import { createServer } from 'http';
 import Server from './server';
-import MongoConnector from './connector/mongo.connector';
+import MongoConnector from './connectors/mongo.connector';
 
 const http = createServer(Server);
 

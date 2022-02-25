@@ -1,5 +1,5 @@
 import {Router} from "express";
-import OtpController from "../controller/otp.controller";
+import OtpController from "../controllers/otp.controller";
 
 class OtpRoute {
     public router: Router;

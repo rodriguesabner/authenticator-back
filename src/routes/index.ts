@@ -1,5 +1,5 @@
 import express, {Application} from "express";
-import OTPController from "../controller/otp.controller";
+import OTPController from "../controllers/otp.controller";
 import OtpRoute from "./otp.route";
 import ProviderRoute from "./provider.route";
 

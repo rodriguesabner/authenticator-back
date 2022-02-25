@@ -1,5 +1,5 @@
 import {Request, Response} from "express";
-import ProviderService from "../service/provider.service";
+import ProviderService from "../services/provider.service";
 
 class ProviderController {
     private managerService: ProviderService;
