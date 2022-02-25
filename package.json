@@ -11,7 +11,7 @@
     "prepare": "husky install"
   },
   "name": "authenticator-back",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "src/index.ts",
   "repository": "https://github.com/rodriguesabner/authenticator-back.git",
   "author": "Abner <abnerodrigs@gmail.com>",
