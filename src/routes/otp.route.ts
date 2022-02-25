@@ -1,22 +1,23 @@
-import {Router} from "express";
-import OtpController from "../controllers/otp.controller";
+import { Router } from 'express';
+import OtpController from '../controllers/otp.controller';
 
 class OtpRoute {
-    public router: Router;
-    private otpController: OtpController
+  public router: Router;
 
-    constructor() {
-        this.router = Router();
-        this.otpController = new OtpController();
-        this.routes();
-    }
+  private otpController: OtpController;
 
-    routes(){
-        this.router.post("/parse", this.otpController.parse.bind(this.otpController))
-        this.router.post("/validate", this.otpController.validate.bind(this.otpController));
-        this.router.post("/create", this.otpController.createTotp.bind(this.otpController));
-        this.router.post("/generate-code", this.otpController.generateTotp.bind(this.otpController));
-    }
+  constructor() {
+    this.router = Router();
+    this.otpController = new OtpController();
+    this.routes();
+  } 
+
+  routes(){
+    this.router.post('/parse', this.otpController.parse.bind(this.otpController));
+    this.router.post('/validate', this.otpController.validate.bind(this.otpController));
+    this.router.post('/create', this.otpController.createTotp.bind(this.otpController));
+    this.router.post('/generate-code', this.otpController.generateTotp.bind(this.otpController));
+  }
 }
 
 export default OtpRoute;

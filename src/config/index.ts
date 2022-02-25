@@ -4,7 +4,7 @@ import { version } from '../../package.json';
 
 const ENV = process.env.NODE_ENV || 'development';
 
-const config = {
+const config = { 
   [ENV]: true,
   env: ENV,
   name: 'authenticator-server',
@@ -16,4 +16,4 @@ const config = {
   },
 };
 
-export {config};
+export { config };

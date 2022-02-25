@@ -1,20 +1,21 @@
-import {Router} from "express";
-import ProviderController from "../controllers/provider.controller";
+import { Router } from 'express';
+import ProviderController from '../controllers/provider.controller';
 
 class ProviderRoute {
-    public router: Router;
-    private managerController: ProviderController;
+  public router: Router;
 
-    constructor() {
-        this.router = Router();
-        this.managerController = new ProviderController();
-        this.routes();
-    }
+  private managerController: ProviderController;
 
-    routes(){
-        this.router.get("/", this.managerController.getAll.bind(this.managerController));
-        this.router.delete("/", this.managerController.delete.bind(this.managerController));
-    }
+  constructor() {
+    this.router = Router();
+    this.managerController = new ProviderController();
+    this.routes();
+  }
+
+  routes(){ 
+    this.router.get('/', this.managerController.getAll.bind(this.managerController));
+    this.router.delete('/', this.managerController.delete.bind(this.managerController));
+  }
 
 }
 

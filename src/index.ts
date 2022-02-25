@@ -1,4 +1,4 @@
-import {config} from './config';
+import { config } from './config';
 import { createServer } from 'http';
 import Server from './server';
 import MongoConnector from './connectors/mongo.connector';
