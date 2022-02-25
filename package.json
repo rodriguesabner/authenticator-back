@@ -10,7 +10,7 @@
     "major": "git pull && release-it major"
   },
   "name": "authenticator-back",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "src/index.ts",
   "repository": "https://github.com/rodriguesabner/authenticator-back.git",
   "author": "Abner <abnerodrigs@gmail.com>",
