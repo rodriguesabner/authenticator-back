@@ -13,9 +13,11 @@
 
 O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
 
+- [X] Cria uma nova OTP
+- [X] Valida se uma OTP é valida
 - [x] Cadastra OTP
 - [x] Salva e recupera os dados no banco
-- [ ] Login
+- [ ] Cadastro/Gerenciamento de usuários
 - [ ] Backup Seguro
 
 ## 💻 Pré-requisitos
@@ -50,13 +52,16 @@ Adicione comandos de execução e exemplos que você acha que os usuários achar
 ## 📫 Contribuindo para authenticator-back
 Para contribuir com authenticator-back, siga estas etapas:
 
-1. Bifurque este repositório.
+1. Faça um **fork** repositório.
 2. Crie um branch: `git checkout -b develop`.
 3. Faça suas alterações e confirme-as: `git commit -m '<mensagem_commit>'`
 4. Envie para o branch original: `git push`
 5. Crie a solicitação de pull.
 
 Como alternativa, consulte a documentação do GitHub em [como criar uma solicitação pull](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
+
+## Bibliotecas importantes
+OTPAuth - https://github.com/hectorm/otpauth
 
 ## 🤝 Colaboradores
 
