@@ -8,8 +8,8 @@ const config = {
   [ENV]: true,
   env: ENV,
   name: 'authenticator-server',
-  secretKey: process.env.SECRET_KEY || 'MY_SECRET_KEY',
   version,
+  secretKey: process.env.SECRET_KEY || 'MY_SECRET_KEY',
   web: {
     port: process.env.PORT || 3040,
     database: process.env.DATABASE_URL || 'mongodb://localhost:27017/test',

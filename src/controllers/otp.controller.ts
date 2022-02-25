@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-redeclare
 import { Request, Response } from 'express';
 import OtpService from '../services/otp.service';
 

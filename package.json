@@ -1,4 +1,20 @@
 {
+  "scripts": {
+    "start": "ts-node-dev --transpile-only src/index.ts",
+    "build": "rimraf ./dist && tsc",
+    "test": "jest --forceExit --detectOpenHandles --watchAll",
+    "release": "release-it",
+    "lint": "eslint --ext .ts,.js,.json src/**/*.ts --no-fix",
+    "patch": "git pull && release-it patch",
+    "minor": "git pull && release-it minor",
+    "major": "git pull && release-it major"
+  },
+  "name": "authenticator-back",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "repository": "https://github.com/rodriguesabner/authenticator-back.git",
+  "author": "Abner <abnerodrigs@gmail.com>",
+  "license": "MIT",
   "devDependencies": {
     "@babel/preset-typescript": "^7.16.7",
     "@types/typescript": "^2.0.0",
@@ -26,15 +42,12 @@
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "helmet": "^5.0.2",
+    "husky": "^7.0.4",
     "jest": "^27.5.1",
     "mongoose": "^6.2.3",
     "otpauth": "^7.0.10",
+    "release-it": "^14.12.5",
     "socket.io": "^4.4.1",
     "supertest": "^6.2.2"
-  },
-  "scripts": {
-    "start": "ts-node-dev --transpile-only src/index.ts",
-    "build": "sucrase ./src -d ./dist --transforms imports",
-    "test": "jest --forceExit --detectOpenHandles --watchAll"
   }
 }

@@ -1,0 +1,17 @@
+{
+  "src": {
+    "tagName": "v%s"
+  },
+  "github": {
+    "release": false
+  },
+  "npm": {
+    "publish": false
+  },
+  "prompt": {
+    "src": {
+      "release": false,
+      "publish": false
+    }
+  }
+}
