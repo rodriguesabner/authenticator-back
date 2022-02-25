@@ -3,14 +3,14 @@
     "tagName": "v%s"
   },
   "github": {
-    "release": false
+    "release": true
   },
   "npm": {
     "publish": false
   },
   "prompt": {
     "src": {
-      "release": false,
+      "release": true,
       "publish": false
     }
   }
