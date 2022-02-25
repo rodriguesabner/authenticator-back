@@ -1,7 +1,8 @@
-import express,{Request, Response} from "express";
+import express from "express";
 import cors from "cors";
 import Routes from "./routes";
 import compression from "compression";
+import helmet from "helmet";
 
 class Server {
     public app: express.Application;
@@ -14,12 +15,12 @@ class Server {
     }
 
     config() {
-        this.app.use(express.static(__dirname + "/files"));
-
         this.middlewares();
+        this.app.use(express.static(__dirname + "/files"));
     }
 
     middlewares(){
+        this.app.use(helmet())
         this.app.use(express.json({limit: "25mb"}));
         this.app.use(express.urlencoded({extended: true}));
         this.app.use(compression());
