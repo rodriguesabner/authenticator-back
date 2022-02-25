@@ -6,17 +6,13 @@ class BaseService {
             /^otpauth:\/\/([ht]otp)\/(.+)\?([A-Z0-9.~_-]+=[^?&]*(?:&[A-Z0-9.~_-]+=[^?&]*)*)$/i;
     }
 
-    extractOTPURI(uri: string): string  {
+    extractOTPURI(uri: string): { uri: string; label: any; secret: any; emitter: any; issuer: any }  {
         const match = this.OTPURI_REGEX.exec(uri);
         if (!match) {
             throw new Error('Invalid OTP URI');
         }
 
-        const paramsStart = match[2].split(':').reduce((acc, param) => {
-            // @ts-ignore
-            acc.push(param);
-            return acc;
-        }, []);
+        const uriLabel = match[2].split(/:(.+)/, 2).map(decodeURIComponent);
 
         const paramsFinal = match[3].split('&').reduce((acc, param) => {
             const [key, value] = param.split('=');
@@ -25,15 +21,16 @@ class BaseService {
             return acc;
         }, {});
 
-        let [emitter, label]: any = paramsStart;
+        const [emitter, label]: any = uriLabel;
         const { issuer, secret }: any  = paramsFinal;
 
+        let newEmitter = emitter;
         if(emitter !== issuer){
-            emitter = issuer;
+            newEmitter = issuer;
         }
 
-        const otpuri = `otpauth://totp/${emitter}:${label}?secret=${secret}&issuer=${issuer}`;
-        return otpuri;
+        const otpuri = `otpauth://totp/${newEmitter}:${label}?secret=${secret}&issuer=${issuer}`;
+        return {uri: otpuri, emitter, label, secret, issuer};
     }
 }
 

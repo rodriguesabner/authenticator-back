@@ -56,14 +56,16 @@ class OtpService extends BaseService {
     }
 
     async parse(otpauth: string) {
-        const uriExtracted = this.extractOTPURI(otpauth);
-        const parsedTotp = OTPAuth.URI.parse(uriExtracted);
+        const otp = this.extractOTPURI(otpauth);
+        const parsedTotp = OTPAuth.URI.parse(otp.uri);
+
         const token = parsedTotp.generate();
 
         const provider = await this.providerRepository.save({
-            issuer: parsedTotp.issuer,
+            emitter: otp.emitter,
+            issuer: otp.issuer,
             label: parsedTotp.label,
-            uriExtracted,
+            parsedTotp,
             algorithm: parsedTotp.algorithm,
             digits: parsedTotp.digits,
         });

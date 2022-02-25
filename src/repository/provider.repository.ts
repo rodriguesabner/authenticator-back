@@ -11,11 +11,11 @@ class ProviderRepository extends BaseMapper {
         return await ProviderSchema.find();
     }
 
-    async save({issuer, label, algorithm, digits, period, secret}: any) {
+    async save({emitter, issuer, label, algorithm, digits, period, secret}: any) {
         const proverExists = await ProviderSchema.findOne({issuer: issuer, label: label});
 
         const schema = {
-            issuer: issuer,
+            issuer: `${issuer} - ${emitter}`,
             label: label,
             algorithm: algorithm,
             digits: digits,
@@ -27,7 +27,7 @@ class ProviderRepository extends BaseMapper {
         const provider = new ProviderSchema(schema);
 
         if (proverExists) {
-            await provider.updateOne({issuer: issuer}, schema);
+            await provider.updateOne({issuer: issuer, label: label}, schema);
         } else {
             await provider.save();
         }
