@@ -13,9 +13,8 @@ class ProviderRepository extends BaseMapper {
   }
 
   async save(props: ProviderInterfaceSaveProps) {
-    const providerExists = await ProviderSchema.findOne({ issuer: props.issuer, label: props.label });
-
     const parsedIssuer = `${props.issuer} - ${props.emitter}`;
+    const providerExists = await ProviderSchema.findOne({ issuer: parsedIssuer, label: props.label });
 
     const schema = {
       issuer: parsedIssuer,
@@ -30,7 +29,7 @@ class ProviderRepository extends BaseMapper {
     const provider = new ProviderSchema(schema);
 
     if (providerExists) {
-      await provider.updateOne({ issuer: props.issuer, label: props.label }, schema);
+      await provider.updateOne({ issuer: parsedIssuer, label: props.label }, schema);
     } else {
       await provider.save();
     }

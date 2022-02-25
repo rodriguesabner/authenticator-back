@@ -11,18 +11,6 @@ class OtpService extends BaseService {
     this.providerRepository = new ProviderRepository();
   }
 
-  async generateCode({ issuer, label }: any) {
-    const provider = await this.providerRepository.findOne(issuer, label);
-
-    delete provider._id;
-    delete provider.icon;
-
-    const totp = new OTPAuth.TOTP(provider);
-    const token = totp.generate();
-
-    return token;
-  }
-
   async create({ issuer, label, secret }: any) {
     const totp = new OTPAuth.TOTP({
       issuer: issuer,
@@ -35,6 +23,18 @@ class OtpService extends BaseService {
 
     const token = totp.generate();
     return { token };
+  }
+
+  async generateCode({ issuer, label }: any) {
+    const provider = await this.providerRepository.findOne(issuer, label);
+
+    delete provider._id;
+    delete provider.icon;
+
+    const totp = new OTPAuth.TOTP(provider);
+    const token = totp.generate();
+
+    return token;
   }
 
   async validate(props: ProviderIsValidProps): Promise<{ isValid: boolean }> {
@@ -55,7 +55,7 @@ class OtpService extends BaseService {
     return { isValid: isValid != null && isValid === 0 };
   }
 
-  async parse(otpauth: string): Promise<ProviderParseResponse> {
+  async parseURLToCode(otpauth: string): Promise<ProviderParseResponse> {
     const otp = this.extractOTPURI(otpauth);
     const parsedTotp = OTPAuth.URI.parse(otp.uri);
 
