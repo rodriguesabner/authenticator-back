@@ -7,7 +7,8 @@
     "lint": "eslint --ext .ts,.js,.json src/**/*.ts --no-fix",
     "patch": "git pull && release-it patch",
     "minor": "git pull && release-it minor",
-    "major": "git pull && release-it major"
+    "major": "git pull && release-it major",
+    "prepare": "husky install"
   },
   "name": "authenticator-back",
   "version": "1.0.1",
@@ -26,7 +27,8 @@
     "eslint-plugin-import": "^2.25.4",
     "ts-node": "^10.5.0",
     "ts-node-dev": "^1.1.8",
-    "typescript": "^4.5.5"
+    "typescript": "^4.5.5",
+    "husky": "^7.0.0"
   },
   "dependencies": {
     "@babel/preset-env": "^7.16.11",
@@ -49,10 +51,5 @@
     "release-it": "^14.12.5",
     "socket.io": "^4.4.1",
     "supertest": "^6.2.2"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn lint"
-    }
   }
 }
